@@ -6,7 +6,7 @@ import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import User from "./models/User.js";
 import bcrypt from "bcryptjs";
-
+import questionRoutes from "./routes/questionRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -15,6 +15,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use("/api/auth", authRoutes);
+app.use("/api/questions", questionRoutes);
 
 //admin creation
 const ensureAdminExists = async () => {
@@ -34,7 +35,7 @@ const ensureAdminExists = async () => {
       adminUser = await User.create({
         username: "Admin",
         email: adminEmail,
-        password: adminPassword,  // plain text, hook will hash
+        password: adminPassword,  
       });
       console.log("✅ Admin user created automatically");
     } else {
