@@ -20,7 +20,7 @@ const PublicNavbar = () => {
           <div className="hidden md:flex space-x-6 text-lg">
             <Link to="/login" className="hover:text-yellow-300">Login</Link>
             <Link to="/register" className="hover:text-yellow-300">Register</Link>
-            <Link to="/about" className="hover:text-yellow-300">About</Link>
+            <a href="#about" className="hover:text-yellow-300">About</a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -62,7 +62,7 @@ const PublicNavbar = () => {
         <div className="md:hidden bg-indigo-700 px-2 pt-2 pb-3 space-y-2">
           <Link to="/login" className="block px-3 py-2 rounded hover:bg-indigo-500">Login</Link>
           <Link to="/register" className="block px-3 py-2 rounded hover:bg-indigo-500">Register</Link>
-          <Link to="/about" className="block px-3 py-2 rounded hover:bg-indigo-500">About</Link>
+          <a href="#about" className="block px-3 py-2 rounded hover:bg-indigo-500">About</a>
         </div>
       )}
     </nav>
@@ -70,4 +70,3 @@ const PublicNavbar = () => {
 };
 
 export default PublicNavbar;
-
