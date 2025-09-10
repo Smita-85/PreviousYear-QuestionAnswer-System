@@ -6,6 +6,8 @@ import PrivateNavbar from './components/PrivateNavbar'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import LandingPage from "./pages/Landing";
+import StudentDashboard from "./pages/StudentDashboard";
+
 
 const NavbarWrapper = () => {
   const { user } = useContext(AuthContext);
@@ -18,9 +20,11 @@ function App() {
       <NavbarWrapper />
 
       <Routes>
-         <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/student/dashboard" element={<StudentDashboard />} />
+
       </Routes>
     </AuthProvider>
   )

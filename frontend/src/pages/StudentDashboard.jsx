@@ -67,5 +67,4 @@ const StudentDashboard = ({ onSubjectSelect }) => {
     </div>
   );
 };
-
 export default StudentDashboard;
