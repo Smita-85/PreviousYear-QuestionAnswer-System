@@ -8,11 +8,11 @@ import Register from './pages/Register'
 import LandingPage from "./pages/Landing";
 import StudentDashboard from "./pages/StudentDashboard";
 
-
-const NavbarWrapper = () => {
-  const { user } = useContext(AuthContext);
-  return user ? <PrivateNavbar /> : <PublicNavbar />;
+  const NavbarWrapper = () => {
+  const { user, token } = useContext(AuthContext);
+  return user && token ? <PrivateNavbar /> : <PublicNavbar />;
 };
+
 function App() {
   return (
       <AuthProvider>
@@ -24,7 +24,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/student/dashboard" element={<StudentDashboard />} />
-
       </Routes>
     </AuthProvider>
   )

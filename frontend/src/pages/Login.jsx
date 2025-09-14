@@ -31,10 +31,10 @@ export default function Login() {
       if (!res.ok) throw new Error(data.message || "Login failed");
 
       // ✅ Save to context + localStorage
-      login(data.user, data.token);
+       login(data);
 
       // Redirect based on role
-      if (data.user.role === "admin") {
+      if (data.role === "admin") {
         navigate("/admin/dashboard");
       } else {
         navigate("/student/dashboard");
