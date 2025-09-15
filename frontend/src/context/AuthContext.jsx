@@ -75,12 +75,14 @@ export const AuthProvider = ({ children }) => {
 
   // ✅ Accept full backend response object
   const login = (data) => {
-    const { token, ...userData } = data;
-    setUser(userData);
-    setToken(token);
-    localStorage.setItem("user", JSON.stringify(userData));
-    localStorage.setItem("token", token);
-  };
+  if (!data || !data.token) return; // prevent bad login
+  const { token, ...userData } = data;
+  setUser(userData);
+  setToken(token);
+  localStorage.setItem("user", JSON.stringify(userData));
+  localStorage.setItem("token", token);
+};
+
 
   const logout = () => {
     setUser(null);

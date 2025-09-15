@@ -1,15 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Menu, X, Heart, User, LogOut } from "lucide-react";
+import { AuthContext } from "../context/AuthContext";
 
 export default function PrivateNavbar() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const { logout } = useContext(AuthContext); // ✅ use logout from context
 
   const handleLogout = () => {
-    // TODO: Clear auth tokens / session
-    localStorage.removeItem("token"); 
-    navigate("/login"); 
+    logout();   // ✅ clears user + token in context and localStorage
+    navigate("/"); // ✅ go back to landing page
   };
 
   return (
@@ -23,16 +24,10 @@ export default function PrivateNavbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-6">
-            <Link
-              to="/student/favourites"
-              className="flex items-center gap-2 hover:text-purple-400"
-            >
+            <Link to="/student/favourites" className="flex items-center gap-2 hover:text-purple-400">
               <Heart className="w-5 h-5" /> Favourites
             </Link>
-            <Link
-              to="/student/profile"
-              className="flex items-center gap-2 hover:text-purple-400"
-            >
+            <Link to="/student/profile" className="flex items-center gap-2 hover:text-purple-400">
               <User className="w-5 h-5" /> Profile
             </Link>
             <button
@@ -55,16 +50,10 @@ export default function PrivateNavbar() {
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-gray-800 px-4 py-3 space-y-3">
-          <Link
-            to="/student/favourites"
-            className="flex items-center gap-2 hover:text-purple-400"
-          >
+          <Link to="/student/favourites" className="flex items-center gap-2 hover:text-purple-400">
             <Heart className="w-5 h-5" /> Favourites
           </Link>
-          <Link
-            to="/student/profile"
-            className="flex items-center gap-2 hover:text-purple-400"
-          >
+          <Link to="/student/profile" className="flex items-center gap-2 hover:text-purple-400">
             <User className="w-5 h-5" /> Profile
           </Link>
           <button

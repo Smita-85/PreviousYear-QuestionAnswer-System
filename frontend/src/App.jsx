@@ -7,16 +7,17 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import LandingPage from "./pages/Landing";
 import StudentDashboard from "./pages/StudentDashboard";
+import FavouritesPage from "./pages/Favourites";
 
   const NavbarWrapper = () => {
-  const { user, token } = useContext(AuthContext);
-  return user && token ? <PrivateNavbar /> : <PublicNavbar />;
+  const { token } = useContext(AuthContext);
+  return token ? <PrivateNavbar /> : <PublicNavbar />;
 };
+
 
 function App() {
   return (
       <AuthProvider>
-      {/* ✅ Navbar always shown depending on login state */}
       <NavbarWrapper />
 
       <Routes>
@@ -24,6 +25,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/student/dashboard" element={<StudentDashboard />} />
+        <Route path="/favourites" element={<FavouritesPage />} /> 
       </Routes>
     </AuthProvider>
   )
